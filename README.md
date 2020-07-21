@@ -10,7 +10,7 @@ Make mass communication organized, fast, and easy.
 Any company / group that wants to send mass messages can use NotifyMe. Some user case scenarios are emergency notifications, weather alerts, event changes or updates, reminders, announcements, appointment reminders etc.
 
 ### Data:
-This application will make use of Twilio API for sending SMS and SendGrid API to send emails. This app will collect basic user information to signup. A user is allowed to add contact and send messages to them via sms, email.
+This application will make use of [Twilio API](https://www.twilio.com/docs/sms/api) for sending SMS and [SendGrid API](https://sendgrid.com/docs/API_Reference/api_v3.html) to send emails. This app will collect basic user information to signup. A user is allowed to add contact and send messages to them via sms, email.
 
 ### Outline:
 **Database Schema:**
