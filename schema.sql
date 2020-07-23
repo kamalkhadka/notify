@@ -1,71 +1,65 @@
 -- ************** Users ************
-CREATE TABLE "Users"
+CREATE TABLE "users"
 (
- "id"         integer NOT NULL,
+ "id"         serial PRIMARY KEY,
  "first_name" varchar(50) NOT NULL,
  "last_name"  varchar(20) NOT NULL,
  "email"      varchar(50) NOT NULL,
- "password"   varchar(50) NOT NULL,
- CONSTRAINT "PK_users" PRIMARY KEY ( "id" )
+ "password"   text NOT NULL
 );
 
 -- Contacts 
 
-CREATE TABLE "Contacts"
+CREATE TABLE "contacts"
 (
- "id"         integer NOT NULL,
+ "id"         serial PRIMARY KEY,
  "first_name" varchar(40) NOT NULL,
  "last_name"  varchar(20) NOT NULL,
  "phone"      varchar(50) NOT NULL,
  "email"      varchar(50) NOT NULL,
  "user_id"    integer NOT NULL,
- CONSTRAINT "PK_contacts" PRIMARY KEY ( "id" ),
- CONSTRAINT "FK_users_contacts" FOREIGN KEY ( "user_id" ) REFERENCES "Users" ( "id" )
+ CONSTRAINT "FK_users_contacts" FOREIGN KEY ( "user_id" ) REFERENCES "users" ( "id" )
 );
 
 -- ************************************** "Groups"
 
-CREATE TABLE "Groups"
+CREATE TABLE "groups"
 (
- "id"      integer NOT NULL,
+ "id"      serial PRIMARY KEY,
  "name"    varchar(10) NOT NULL,
  "user_id" integer NOT NULL,
- CONSTRAINT "PK_groups" PRIMARY KEY ( "id" ),
- CONSTRAINT "FK_users_groups" FOREIGN KEY ( "user_id" ) REFERENCES "Users" ( "id" )
+ CONSTRAINT "FK_users_groups" FOREIGN KEY ( "user_id" ) REFERENCES "users" ( "id" )
 );
 
 -- ************************************** "Messages"
 
-CREATE TABLE "Messages"
+CREATE TABLE "messages"
 (
- "id"           integer NOT NULL,
+ "id"           serial PRIMARY KEY,
  "message_type" bit NOT NULL,
  "message"      varchar(50) NOT NULL,
  "user_id"      integer NOT NULL,
- CONSTRAINT "PK_message" PRIMARY KEY ( "id" ),
- CONSTRAINT "FK_users_messages" FOREIGN KEY ( "user_id" ) REFERENCES "Users" ( "id" )
+ CONSTRAINT "FK_users_messages" FOREIGN KEY ( "user_id" ) REFERENCES "users" ( "id" )
 );
 
 -- ************************************** "Templates"
 
-CREATE TABLE "Templates"
+CREATE TABLE "templates"
 (
- "id"            integer NOT NULL,
+ "id"            serial PRIMARY KEY,
  "name"          varchar(50) NOT NULL,
  "text"          varchar(50) NOT NULL,
- "template_type" bit NOT NULL,
- CONSTRAINT "PK_templates" PRIMARY KEY ( "id" )
+ "template_type" bit NOT NULL
 );
 
 
 -- ************************************** "Contacts_Groups"
 
-CREATE TABLE "Contacts_Groups"
+CREATE TABLE "contacts_groups"
 (
- "id"         integer NOT NULL,
+ "id"         serial PRIMARY KEY,
  "contact_id" integer NOT NULL,
  "group_id"   integer NOT NULL,
- CONSTRAINT "PK_contacts_groups" PRIMARY KEY ( "id" ),
- CONSTRAINT "FK_contacts" FOREIGN KEY ( "contact_id" ) REFERENCES "Contacts" ( "id" ),
- CONSTRAINT "FK_groups" FOREIGN KEY ( "group_id" ) REFERENCES "Groups" ( "id" )
+ CONSTRAINT "FK_contacts" FOREIGN KEY ( "contact_id" ) REFERENCES "contacts" ( "id" ),
+ CONSTRAINT "FK_groups" FOREIGN KEY ( "group_id" ) REFERENCES "groups" ( "id" )
 );
