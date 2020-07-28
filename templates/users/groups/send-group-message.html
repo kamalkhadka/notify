@@ -1,0 +1,10 @@
+{% extends 'base.html' %} 
+{% block title %}Create and send message{% endblock %}
+{% block content %}
+<h1>Compose a message and send</h1>
+<form action="/groups/{{group.id}}/messages" method="POST">
+{% include '/common/form.html' %}
+<button class="btn btn-primary btn-block btn-lg">Send message</button>
+<a class="btn btn-secondary btn-lg btn-block " href="/groups/{{group.id}}">Cancel</a>
+</form>
+{% endblock %}

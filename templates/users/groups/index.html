@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block title %}edit group{% endblock %} {% block
+content %}
+<h1>Modify Group</h1>
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <span>Group: <strong>{{group.name}}</strong> </span>
+    <a
+      href="/groups/{{group.id}}/delete"
+      class="btn btn-sm btn-outline-danger"
+      title="delete {{group.name}}"
+    >
+      <i class="fa fa-trash" aria-hidden="true"></i>
+    </a>
+  </div>
+  <div class="card-body">
+    {% if group.contacts != group.user.contacts %}
+   
+    <a href="/groups/{{group.id}}/contacts/add" class="btn btn-primary"
+      >Add contact</a
+    >
+
+    {% endif %} 
+    {% if group.contacts %}
+    <a href="/groups/{{group.id}}/messages" class="btn btn-primary"
+    >Send Message</a
+  >
+    <h2 class="h4 mt-2">{{group.name}} contacts</h2>
+    <ul class="list-group list-group-flush">
+      {% for contact in group.contacts %}
+      <li class="list-group-item  d-flex justify-content-between">{{contact.first_name}} <a class="btn btn-danger" title="remove from {{group.name}}" href="/groups/{{group.id}}/contacts/{{contact.id}}/remove"><span class="fa fa-trash"></span></a></li>
+      {% endfor %} {% endif %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

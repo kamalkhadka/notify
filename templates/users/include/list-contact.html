@@ -1,0 +1,14 @@
+<div class="list-group mt-2">
+  
+  {% for contact in user.contacts %}
+
+  <li
+    
+    class="list-group-item d-flex justify-content-between"
+    >{{contact.first_name}}
+  <a href="/contacts/{{contact.id}}/messages" class="btn btn-primary">Send Message</a>
+  </li>
+
+  {% endfor %}
+
+</div>

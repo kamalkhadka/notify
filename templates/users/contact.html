@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Create contact{% endblock %}
+{% block content %}
+<h1>Create Contact</h1>
+<form action="/users/{{user.id}}/contacts/create" method="post">
+    {% include '/common/form.html' %}
+    <button class="btn btn-primary btn-block btn-lg">Add Contact</button>
+    <a class="btn btn-secondary btn-lg btn-block " href="/users/{{user.id}}">Cancel</a>
+</form>
+{% endblock %}
