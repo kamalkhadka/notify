@@ -20,15 +20,18 @@
     {% include '/common/navigation.html' %}
 
     <main role="main">
-      <div class="container">
-        {% with messages = get_flashed_messages() %} {% if messages %} {% for
-        message in messages %}
-        <div class="alert alert-secondary" role="alert">
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+
+      <div data-delay="1500" class="toast">
+        <div class="toast-body">
           {{message}}
         </div>
-        {% endfor %} {% endif %} {% endwith %} {% block content %} CONTENT GOES
-        HERE {% endblock %} 
-        
+      </div>
+
+      {% endfor %} {% endif %} {% endwith %}
+      <div class="container">
+        {% block content %} CONTENT GOES HERE {% endblock %}
       </div>
     </main>
     {% include '/common/footer.html' %}

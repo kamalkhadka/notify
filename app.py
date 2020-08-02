@@ -273,7 +273,7 @@ def delete_contact(contact_id):
         return redirect('/')
 
     if Contact.delete_contact(contact):
-        flash(f'{contact.first_name} deleted.')
+        flash(f'Contact: {contact.first_name} deleted.')
         return redirect('/')
     else:
         flash(f'Something went wrong while deleting {contact.first_name}.')
@@ -434,3 +434,7 @@ def check_token(token, authy_id):
         return True
     else:
         return False
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
