@@ -14,18 +14,24 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link rel="stylesheet" href="/static/style.css" />
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     {% include '/common/navigation.html' %}
-    <div class="container">
-      {% with messages = get_flashed_messages() %} {% if messages %} {% for
-      message in messages %}
-      <div class="alert alert-secondary" role="alert">
-        {{message}}
+
+    <main role="main">
+      <div class="container">
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <div class="alert alert-secondary" role="alert">
+          {{message}}
+        </div>
+        {% endfor %} {% endif %} {% endwith %} {% block content %} CONTENT GOES
+        HERE {% endblock %} 
+        
       </div>
-      {% endfor %} {% endif %} {% endwith %} {% block content %} CONTENT GOES
-      HERE {% endblock %} {% include '/common/footer.html' %}
-    </div>
+    </main>
+    {% include '/common/footer.html' %}
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

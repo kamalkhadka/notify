@@ -4,6 +4,9 @@ CREATE TABLE users (
         first_name TEXT NOT NULL,
         last_name TEXT NOT NULL,
         email TEXT NOT NULL,
+        phone TEXT NOT NULL,
+        authy_id TEXT NOT NULL,
+        is_valid BOOLEAN,
         password TEXT NOT NULL,
         PRIMARY KEY (id),
         UNIQUE (email)
@@ -63,4 +66,11 @@ CREATE TABLE contacts_groups (
         PRIMARY KEY (id),
         FOREIGN KEY(contact_id) REFERENCES contacts (id),
         FOREIGN KEY(group_id) REFERENCES groups (id)
+);
+
+CREATE TABLE email_limit (
+        id SERIAL NOT NULL,
+        date TIMESTAMP WITHOUT TIME ZONE,
+        count INTEGER,
+        PRIMARY KEY (id)
 );

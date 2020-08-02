@@ -1,14 +1,24 @@
 <div class="list-group mt-2">
-  
   {% for contact in user.contacts %}
 
-  <li
-    
-    class="list-group-item d-flex justify-content-between"
-    >{{contact.first_name}}
-  <a href="/contacts/{{contact.id}}/messages" class="btn btn-primary">Send Message</a>
+  <li class="list-group-item d-flex justify-content-between">
+    {{contact.first_name}}
+
+    <span>
+      {% if user.is_valid %}
+      <a href="/contacts/{{contact.id}}/messages" class="btn btn-primary"
+        ><i class="fa fa-envelope mr-1" aria-hidden="true"></i>Send Message</a
+      >
+      {% endif %}
+      <a
+        href="/contacts/{{contact.id}}/edit"
+        class="btn btn-secondary"
+        title="edit contact"
+      >
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Contact
+      </a>
+    </span>
   </li>
 
   {% endfor %}
-
 </div>

@@ -1,10 +1,69 @@
-{% extends 'base.html' %}
-{% block title %}Notify - send mass messages{% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% block title %}Notify | keep you team informed and
+connected{% endblock %} {% block content %}
 
-<div class="jumbotron">
-<h1 class="display-4">Notify</h1>
-<p class="lead">Send email notifcation</p>
-<a href="/signup" class="btn btn-primary btn-lg">Signup</a>    
+<section class="jumbotron">
+  <div class="container">
+    <h1 class="jumbotron-heading">Notify</h1>
+    <p class="lead text-muted">Send email notifcation</p>
+    <p>
+      <a href="/signup" class="btn btn-success btn-lg">Signup</a>
+    </p>
+  </div>
+</section>
+
+<div class="bg-light rounded pb-5">
+  <div class="container">
+    <h2 class="text-center py-4 mb-3">Some common use cases</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-dark">Schools and Universities</h5>
+            <p class="card-text text-secondary">
+              Keep your students informed about deadlines, campus events,
+              financial aid, and more.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-dark">Non-Profit</h5>
+            <p class="card-text text-secondary">
+              Simple solutoin for messaging your volunteers and members. Inform
+              them about upcoming events or changes in events.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-dark">Healthcare</h5>
+            <p class="card-text text-secondary">
+              Send appointment reminders, changes. Send any last minute changes to appointment. Automate messaging so your
+              staff can focus on more important things.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-dark">Property management</h5>
+            <p class="card-text text-secondary">
+              Keep everyone in the loop about scheduled maintenance, community
+              projects, inspections, and other important residential
+              announcements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
 </div>
-{% endblock %}

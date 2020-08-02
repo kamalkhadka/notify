@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block title %}edit group{% endblock %} {% block
 content %}
-<h1>Modify Group</h1>
 <div class="card">
   <div class="card-header d-flex justify-content-between">
     <span>Group: <strong>{{group.name}}</strong> </span>
@@ -14,20 +13,29 @@ content %}
   </div>
   <div class="card-body">
     {% if group.contacts != group.user.contacts %}
-   
+
     <a href="/groups/{{group.id}}/contacts/add" class="btn btn-primary"
       >Add contact</a
     >
 
-    {% endif %} 
-    {% if group.contacts %}
+    {% endif %} {% if group.contacts %}
+    {% if group.user.is_valid %}
     <a href="/groups/{{group.id}}/messages" class="btn btn-primary"
-    >Send Message</a
-  >
+      ><i class="fa fa-envelope mr-1" aria-hidden="true"></i>Send Message</a
+    >
+    {% endif %}
     <h2 class="h4 mt-2">{{group.name}} contacts</h2>
     <ul class="list-group list-group-flush">
       {% for contact in group.contacts %}
-      <li class="list-group-item  d-flex justify-content-between">{{contact.first_name}} <a class="btn btn-danger" title="remove from {{group.name}}" href="/groups/{{group.id}}/contacts/{{contact.id}}/remove"><span class="fa fa-trash"></span></a></li>
+      <li class="list-group-item d-flex justify-content-between">
+        {{contact.first_name}}
+        <a
+          class="btn btn-outline-warning"
+          title="remove from {{group.name}}"
+          href="/groups/{{group.id}}/contacts/{{contact.id}}/remove"
+          ><i class="fa fa-times"></i
+        ></a>
+      </li>
       {% endfor %} {% endif %}
     </ul>
   </div>

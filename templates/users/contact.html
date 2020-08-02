@@ -1,10 +1,21 @@
-{% extends 'base.html' %}
-{% block title %}Create contact{% endblock %}
-{% block content %}
-<h1>Create Contact</h1>
-<form action="/users/{{user.id}}/contacts/create" method="post">
-    {% include '/common/form.html' %}
-    <button class="btn btn-primary btn-block btn-lg">Add Contact</button>
-    <a class="btn btn-secondary btn-lg btn-block " href="/users/{{user.id}}">Cancel</a>
-</form>
+{% extends 'base.html' %} {% block title %}Create contact{% endblock %} {% block
+content %}
+<div class="row">
+  <div class="col-md-10 mx-auto">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h1>Create Contact</h1>
+        <form action="/users/{{user.id}}/contacts/create" method="post">
+          {% include '/common/form.html' %}
+          <button class="btn btn-primary btn-block btn-lg">Add Contact</button>
+          <a
+            class="btn btn-secondary btn-lg btn-block"
+            href="/users/{{user.id}}"
+            >Cancel</a
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

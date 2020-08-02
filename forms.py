@@ -9,6 +9,8 @@ class SignupForm(FlaskForm):
     last_name = StringField('Last name', validators=[Required('Last name is required')])
     email  = StringField('Email', validators=[Required('Email is required'), Email()])
     password = PasswordField('Password', validators=[Required('Password is required')])
+    phone = StringField('Phone', validators=[Required()])
+
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[Required('Email is required'), Email()])
@@ -26,4 +28,7 @@ class GroupForm(FlaskForm):
 class MessageForm(FlaskForm):
     subject = StringField('Subject', validators=[Required()])
     message = TextAreaField('Message', validators=[Required()])
+
+class VerifyUserForm(FlaskForm):
+    token = StringField('Token', validators=[Required()])
     

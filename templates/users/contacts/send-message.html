@@ -1,10 +1,17 @@
-{% extends 'base.html' %} 
-{% block title %}Create and send message{% endblock %}
+{% extends 'base.html' %} {% block title %}Create and send message{% endblock %}
 {% block content %}
-<h1>Compose a message and send</h1>
-<form action="/contacts/{{contact.id}}/messages" method="POST">
-{% include '/common/form.html' %}
-<button class="btn btn-primary btn-block btn-lg">Send message</button>
-<a class="btn btn-secondary btn-lg btn-block " href="/">Cancel</a>
-</form>
+<div class="row">
+  <div class="col-md-10 mx-auto">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h1>Compose and send message</h1>
+        <form action="/contacts/{{contact.id}}/messages" method="POST">
+          {% include '/common/form.html' %}
+          <button class="btn btn-primary btn-block btn-lg">Send message</button>
+          <a class="btn btn-secondary btn-lg btn-block" href="/">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

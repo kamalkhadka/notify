@@ -1,10 +1,20 @@
 {% extends 'base.html' %} 
 {% block title %}Login{% endblock %}
 {% block content %}
-<h1>Login</h1>
+<div class="row d-flex justify-content-center">
+  <div class="col-md-6 ">
+<div class="card shadow-lg ">
+  <div class="card-body">
+<h3 class="card-title text-center">Log in to Notify</h3>
+<div class="card-text">
 <form action="/login" method="post">
     {% include '/common/form.html' %}
     <button class="btn btn-primary btn-block btn-lg">Login</button>
-  <a href="/reset" class="">Forgot Password</a>
+  <!-- <a href="/reset" class="">Forgot Password</a> -->
 </form>
+</div>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

@@ -1,9 +1,18 @@
 {% extends 'base.html' %} 
 {% block title %}Signup{% endblock %}
 {% block content %}
+<div class="row">
+    <div class="col-md-10 mx-auto">
+  <div class="card shadow-lg  ">
+    <div class="card-body">
 <h1>Signup</h1>
 <form action="/signup" method="post">
     {% include '/common/form.html' %}
-    <button class="btn btn-primary btn-block btn-lg">Create account</button>
+    <button class="btn btn-primary btn-block btn-lg">Register</button>
 </form>
+</div>
+</div>
+</div>
+</div>
+
 {% endblock %}

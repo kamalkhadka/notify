@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from datetime import date
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -31,6 +32,18 @@ class Contact(db.Model):
 
     groups = db.relationship('Group', secondary="contacts_groups")
 
+    @classmethod
+    def delete_contact(cls, contact):
+        db.session.delete(contact)
+        db.session.commit()
+        if not Contact.query.get(contact.id):
+            return True
+        else:
+            return False
+
+    @classmethod
+    def update_contact(cls, contact):
+        db.session.commit()
 
 class User(db.Model):
     """ model for users """
@@ -40,6 +53,9 @@ class User(db.Model):
     last_name = db.Column(db.Text, nullable=False)
     email = db.Column(db.Text, nullable=False, unique=True)
     password = db.Column(db.Text, nullable=False)
+    phone = db.Column(db.Text, nullable=False)
+    authy_id = db.Column(db.Text, nullable=False)
+    is_valid = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
         return f'<User: first_name = {self.first_name}, last_name={self.last_name}>'
@@ -61,29 +77,6 @@ class User(db.Model):
 
     contacts = db.relationship('Contact')
     groups = db.relationship('Group')
-
-# class Template(db.Model):
-#     __tablename__ = 'templates'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.Text, nullable=False)
-#     text = db.Column(db.Text, nullable=False)
-#     template_type = db.Column(db.Boolean, nullable=False, default=False)
-
-#     def __repr__(self):
-#         return f'<Template: name={self.name}>'
-
-
-# class Message(db.Model):
-
-#     __tablename__ = 'messages'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.Text, nullable=False)
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-#     def __repr__(self):
-#         return f'<Message: {self.id} : {self.message}>'
 
 
 class Group(db.Model):
@@ -134,3 +127,28 @@ class ContactGroup(db.Model):
 
     def __repr__(self):
         return f'<ContactGroup: {self.id}>'
+
+
+class EmailLimit(db.Model):
+    __tablename__ = 'email_limit'
+
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime, default=date.today())
+    count = db.Column(db.Integer, default=0)
+
+    @classmethod
+    def create(cls, email_limit):
+        db.session.add(email_limit)
+        db.session.commit()
+        return email_limit
+
+    @classmethod
+    def reset_count(cls, email_limit):
+        db.session.commit()
+
+    @classmethod
+    def increase_count(cls, email_limit):
+        email_limit.count = email_limit.count + 1
+        db.session.commit()
+
+    
