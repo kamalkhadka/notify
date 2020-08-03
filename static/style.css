@@ -142,4 +142,5 @@
   top: 100px;
   right: 0;
   min-width: 250px;
+  z-index: 1000;
 }
