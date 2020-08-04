@@ -23,7 +23,7 @@
       {% with messages = get_flashed_messages() %} {% if messages %} {% for
       message in messages %}
 
-      <div data-delay="1500" class="toast">
+      <div data-delay="2000" class="toast">
         <div class="toast-body">
           {{message}}
         </div>
@@ -31,6 +31,7 @@
 
       {% endfor %} {% endif %} {% endwith %}
       <div class="container">
+        {% block breadcrumb %}{% endblock %}
         {% block content %} CONTENT GOES HERE {% endblock %}
       </div>
     </main>

@@ -1,10 +1,21 @@
 {% extends 'base.html' %} {% block title %}Create group{% endblock %} {% block
 content %}
+<div class="row ">
+  <div class="col-md-10 mx-auto">
+<nav aria-label="breadcrumb bg-transparent">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Create Group</li>
+  </ol>
+</nav>
+</div>
+</div>
 <div class="row">
   <div class="col-md-10 mx-auto">
     <div class="card shadow-lg">
       <div class="card-body">
         <h1>Create Group</h1>
+        
         <form action="/users/{{user.id}}/groups/create" method="post">
           {% include '/common/form.html' %}
           <button class="btn btn-primary btn-block btn-lg">Create Group</button>

@@ -2,6 +2,11 @@
 'hidden' %}
 <div class="form-group">
   {{field.label}} {{field(class_='form-control')}}
+  {% if field.errors %}
+  {% for error in field.errors %}
+    <small class="text-danger">{{error}}</small>
+  {% endfor %}
+  {% endif %}
 </div>
 {% endfor %}
 

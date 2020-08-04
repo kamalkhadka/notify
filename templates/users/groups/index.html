@@ -1,5 +1,11 @@
 {% extends 'base.html' %} {% block title %}edit group{% endblock %} {% block
 content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Group</li>
+  </ol>
+</nav>
 <div class="card">
   <div class="card-header d-flex justify-content-between">
     <span>Group: <strong>{{group.name}}</strong> </span>
@@ -18,8 +24,7 @@ content %}
       >Add contact</a
     >
 
-    {% endif %} {% if group.contacts %}
-    {% if group.user.is_valid %}
+    {% endif %} {% if group.contacts %} {% if group.user.is_valid %}
     <a href="/groups/{{group.id}}/messages" class="btn btn-primary"
       ><i class="fa fa-envelope mr-1" aria-hidden="true"></i>Send Message</a
     >
