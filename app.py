@@ -98,9 +98,9 @@ def users():
                     email=email, password=password, phone=phone, authy_id=authy_id)
 
         user = User.register(user)
-
-        flash('User created. Please login')
-        return redirect('/')
+        session['user_id'] = user.id
+        # flash('User created. Please login')
+        return redirect(f'/users/{user.id}')
     else:
         return render_template('signup.html', form=signup_form)
 
