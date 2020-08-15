@@ -33,7 +33,7 @@ def check_email_limit():
             return False
 
     if email_limit and email_limit.date.date() < date.today():
-        email_limit.count = 0
+        email_limit.count = 1
         return True
 
     if not email_limit:
@@ -41,8 +41,6 @@ def check_email_limit():
         EmailLimit.create(email_limit)
         if email_limit:
             return True
-
-    # return False
 
 
 @app.route('/')

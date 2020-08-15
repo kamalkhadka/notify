@@ -18,7 +18,6 @@ CREATE TABLE contacts (
         id SERIAL NOT NULL,
         first_name TEXT NOT NULL,
         last_name TEXT NOT NULL,
-        -- phone TEXT NOT NULL,
         email TEXT NOT NULL,
         user_id INTEGER,
         PRIMARY KEY (id),

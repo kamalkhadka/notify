@@ -17,7 +17,6 @@ class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.Text, nullable=False)
     last_name = db.Column(db.Text, nullable=False)
-    # phone = db.Column(db.Text, nullable=False)
     email = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
@@ -43,6 +42,7 @@ class Contact(db.Model):
 
     @classmethod
     def update_contact(cls, contact):
+        # db.session.add(contact)
         db.session.commit()
 
 class User(db.Model):

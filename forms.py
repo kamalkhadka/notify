@@ -2,7 +2,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, TextAreaField, SelectField
 from wtforms.validators import Required, Email, ValidationError
 import phonenumbers
-# from wtforms.widgets import TextArea
 
 
 class SignupForm(FlaskForm):
@@ -28,7 +27,6 @@ class LoginForm(FlaskForm):
 class ContactForm(FlaskForm):
     first_name = StringField('First name', validators=[Required()])
     last_name = StringField('Last name', validators=[Required()])
-    # phone = StringField('Phone', validators=[Required()])
     email = StringField('Email', validators=[Required(), Email()])
 
 class GroupForm(FlaskForm):

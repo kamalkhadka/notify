@@ -4,8 +4,7 @@
 <h1 class="text-center">Your Contacts and Groups</h1>
 {% if not user.is_valid %}
 <div class="alert alert-warning" role="alert">
-  Verification code is sent to your email. Please <a href="/users/{{user.id}}/verify">verify email</a> before you can send emails.
-  
+  Verification code is sent to your email. Please <a href="/users/{{user.id}}/verify">verify email</a> before you can send messages.
   <br>
   You can continue to add contacts and create groups.
 </div>
